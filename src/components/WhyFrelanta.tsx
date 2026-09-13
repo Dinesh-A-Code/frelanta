@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import { RevealOnScroll } from './RevealOnScroll';
 
 export const WhyFrelanta: React.FC = () => {
   const pillars = [
@@ -32,47 +33,53 @@ export const WhyFrelanta: React.FC = () => {
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="mb-16 sm:mb-24 max-w-3xl">
-          <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#E8702A] block mb-3">
-            Distinction
-          </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white leading-[1.05]">
-            Not just another{' '}
-            <span className="font-playfair italic font-normal text-neutral-300">
-              web studio.
+        <RevealOnScroll delay={0} duration={850} direction="up">
+          <div className="mb-16 sm:mb-24 max-w-3xl">
+            <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#E8702A] block mb-3">
+              Distinction
             </span>
-          </h2>
-          <p className="mt-6 text-base sm:text-lg text-neutral-400 font-light leading-relaxed max-w-xl">
-            We don't hand off PSD files and disappear, nor do we build generic templates.
-            We are your embedded technical and visual partners from conception to live deployment.
-          </p>
-        </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white leading-[1.05]">
+              Not just another{' '}
+              <span className="font-playfair italic font-normal text-neutral-300">
+                web studio.
+              </span>
+            </h2>
+            <p className="mt-6 text-base sm:text-lg text-neutral-400 font-light leading-relaxed max-w-xl">
+              We don't hand off PSD files and disappear, nor do we build generic templates.
+              We are your embedded technical and visual partners from conception to live deployment.
+            </p>
+          </div>
+        </RevealOnScroll>
 
         {/* 4 Core Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
-          {pillars.map((pillar) => (
-            <div
+          {pillars.map((pillar, idx) => (
+            <RevealOnScroll
               key={pillar.title}
-              className="p-8 sm:p-10 rounded-3xl bg-[#0F0F0F] border border-white/[0.06] hover:border-white/15 transition-all duration-300 flex flex-col justify-between"
+              delay={100 * (idx + 1)}
+              duration={850}
+              direction="up"
             >
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <CheckCircle2 className="w-5 h-5 text-[#E8702A]" />
-                  <span className="font-mono text-xs text-neutral-500 uppercase tracking-widest">
-                    Pillar
-                  </span>
+              <div className="p-8 sm:p-10 rounded-3xl bg-[#0F0F0F] border border-white/[0.06] hover:border-white/15 transition-all duration-300 flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <CheckCircle2 className="w-5 h-5 text-[#E8702A]" />
+                    <span className="font-mono text-xs text-neutral-500 uppercase tracking-widest">
+                      Pillar
+                    </span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-normal text-white tracking-tight">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-mono text-[#E8702A] mt-1 mb-4">
+                    {pillar.subtitle}
+                  </p>
+                  <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-light">
+                    {pillar.body}
+                  </p>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-normal text-white tracking-tight">
-                  {pillar.title}
-                </h3>
-                <p className="text-xs sm:text-sm font-mono text-[#E8702A] mt-1 mb-4">
-                  {pillar.subtitle}
-                </p>
-                <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-light">
-                  {pillar.body}
-                </p>
               </div>
-            </div>
+            </RevealOnScroll>
           ))}
         </div>
       </div>

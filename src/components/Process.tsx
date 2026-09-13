@@ -1,4 +1,5 @@
 import React from 'react';
+import { RevealOnScroll } from './RevealOnScroll';
 
 interface ProcessStep {
   number: string;
@@ -44,6 +45,9 @@ const STEPS: ProcessStep[] = [
 ];
 
 export const Process: React.FC = () => {
+  // Alternating directions specified in instructions: Discover -> up, Define -> right, Build -> up, Launch -> right
+  const directions: Array<'up' | 'right'> = ['up', 'right', 'up', 'right'];
+
   return (
     <section
       id="process"
@@ -52,62 +56,68 @@ export const Process: React.FC = () => {
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-20 pb-8 border-b border-white/10">
-          <div>
-            <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#E8702A] block mb-3">
-              Methodology
-            </span>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white leading-tight">
-              From idea{' '}
-              <span className="block font-playfair italic font-normal text-neutral-300">
-                to interface.
+        <RevealOnScroll delay={0} duration={800} direction="up">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-20 pb-8 border-b border-white/10">
+            <div>
+              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#E8702A] block mb-3">
+                Methodology
               </span>
-            </h2>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white leading-tight">
+                From idea{' '}
+                <span className="block font-playfair italic font-normal text-neutral-300">
+                  to interface.
+                </span>
+              </h2>
+            </div>
+            <p className="mt-4 md:mt-0 text-sm text-neutral-400 max-w-sm leading-relaxed">
+              A focused 4-stage delivery process built for speed, transparency,
+              and flawless execution.
+            </p>
           </div>
-          <p className="mt-4 md:mt-0 text-sm text-neutral-400 max-w-sm leading-relaxed">
-            A focused 4-stage delivery process built for speed, transparency,
-            and flawless execution.
-          </p>
-        </div>
+        </RevealOnScroll>
 
-        {/* 4 Editorial Process Steps */}
+        {/* 4 Editorial Process Steps with subtle stagger */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {STEPS.map((step) => (
-            <div
+          {STEPS.map((step, idx) => (
+            <RevealOnScroll
               key={step.number}
-              className="group relative flex flex-col justify-between p-8 rounded-2xl bg-[#0A0A0A] border border-white/[0.06] hover:border-white/15 transition-all duration-300"
+              delay={100 * (idx + 1)}
+              duration={800}
+              direction={directions[idx]}
             >
-              {/* Step indicator */}
-              <div>
-                <div className="flex items-center justify-between pb-6 mb-6 border-b border-white/[0.08]">
-                  <span className="font-mono text-xs font-semibold text-[#E8702A] tracking-wider">
-                    STEP {step.number}
+              <div className="group relative flex flex-col justify-between p-8 rounded-2xl bg-[#0A0A0A] border border-white/[0.06] hover:border-white/15 transition-all duration-300 h-full">
+                {/* Step indicator */}
+                <div>
+                  <div className="flex items-center justify-between pb-6 mb-6 border-b border-white/[0.08]">
+                    <span className="font-mono text-xs font-semibold text-[#E8702A] tracking-wider">
+                      STEP {step.number}
+                    </span>
+                    <span className="w-2 h-2 rounded-full bg-white/10 group-hover:bg-[#E8702A] transition-colors" />
+                  </div>
+
+                  <h3 className="text-2xl font-medium text-white tracking-tight mb-1">
+                    {step.title}
+                  </h3>
+                  <span className="text-xs font-mono text-neutral-500 uppercase tracking-wider block mb-4">
+                    {step.subtitle}
                   </span>
-                  <span className="w-2 h-2 rounded-full bg-white/10 group-hover:bg-[#E8702A] transition-colors" />
+
+                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light mb-6">
+                    {step.description}
+                  </p>
                 </div>
 
-                <h3 className="text-2xl font-medium text-white tracking-tight mb-1">
-                  {step.title}
-                </h3>
-                <span className="text-xs font-mono text-neutral-500 uppercase tracking-wider block mb-4">
-                  {step.subtitle}
-                </span>
-
-                <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light mb-6">
-                  {step.description}
-                </p>
+                {/* Step Key Activities */}
+                <div className="pt-4 border-t border-white/[0.04] flex flex-col gap-1.5">
+                  {step.activities.map((act) => (
+                    <div key={act} className="flex items-center gap-2 text-[11px] text-neutral-400 font-mono">
+                      <span className="text-[#E8702A]">›</span>
+                      <span>{act}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-
-              {/* Step Key Activities */}
-              <div className="pt-4 border-t border-white/[0.04] flex flex-col gap-1.5">
-                {step.activities.map((act) => (
-                  <div key={act} className="flex items-center gap-2 text-[11px] text-neutral-400 font-mono">
-                    <span className="text-[#E8702A]">›</span>
-                    <span>{act}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            </RevealOnScroll>
           ))}
         </div>
       </div>
