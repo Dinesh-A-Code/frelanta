@@ -105,32 +105,32 @@ export const Hero: React.FC = () => {
         />
       )}
 
-      {/* Top Spacer for Fixed Navigation */}
-      <div className="w-full pt-16 sm:pt-20 md:pt-24 pointer-events-none flex-shrink-0" />
+      {/* Dedicated Top Spacer ensuring clear buffer under fixed navbar */}
+      <div className="w-full pt-16 sm:pt-20 md:pt-24 lg:pt-28 pointer-events-none flex-shrink-0" />
 
-      {/* Hero Central Content Area: Vertically centered in available space */}
+      {/* Hero Center Content Block: Vertically centered with fluid constraints */}
       <div className="flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-8 w-full max-w-6xl mx-auto my-auto z-20 pointer-events-none">
         {/* Eyebrow */}
         <div
-          className="hero-anim hero-fade mb-2.5 sm:mb-3.5 md:mb-4"
+          className="hero-anim hero-fade mb-3 sm:mb-4 md:mb-5"
           style={{ animationDelay: '0.1s' }}
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.06] border border-white/10 text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-neutral-300 uppercase">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.06] border border-white/10 text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-neutral-300 uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#E8702A] animate-pulse" />
             Independent Digital Studio
           </span>
         </div>
 
-        {/* Responsive Editorial Heading: strictly contained, no horizontal overflow */}
-        <h1 className="w-full max-w-5xl tracking-tightest leading-[0.92] text-white">
+        {/* Responsive Editorial Heading with Fluid Clamping */}
+        <h1 className="w-full max-w-5xl tracking-tightest leading-[0.93] text-white">
           <span
-            className="hero-anim hero-reveal block text-[2.2rem] xs:text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.2rem] 2xl:text-[6.4rem]"
+            className="hero-anim hero-reveal block text-[clamp(2.3rem,min(6.5vw,9.5vh),6.4rem)]"
             style={{ animationDelay: '0.15s' }}
           >
             We build
           </span>
           <span
-            className="hero-anim hero-reveal block text-[2.2rem] xs:text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.2rem] 2xl:text-[6.4rem] mt-0.5 sm:mt-1.5"
+            className="hero-anim hero-reveal block text-[clamp(2.3rem,min(6.5vw,9.5vh),6.4rem)] mt-1 sm:mt-1.5 md:mt-2"
             style={{ animationDelay: '0.30s' }}
           >
             <span className="font-playfair italic font-normal text-neutral-200">
@@ -139,7 +139,7 @@ export const Hero: React.FC = () => {
             things
           </span>
           <span
-            className="hero-anim hero-reveal block text-[2rem] xs:text-[2.4rem] sm:text-[2.8rem] md:text-5xl lg:text-[4.2rem] xl:text-[4.8rem] 2xl:text-[5.8rem] text-neutral-300 mt-0.5 sm:mt-1.5"
+            className="hero-anim hero-reveal block text-[clamp(2.05rem,min(5.7vw,8.5vh),5.5rem)] text-neutral-300 mt-1 sm:mt-1.5 md:mt-2"
             style={{ animationDelay: '0.45s' }}
           >
             worth{' '}
@@ -149,24 +149,24 @@ export const Hero: React.FC = () => {
           </span>
         </h1>
 
-        {/* Hero Supporting Copy */}
+        {/* Hero Supporting Copy with Comfortable Spacing */}
         <p
-          className="hero-anim hero-fade mt-3 sm:mt-4 md:mt-6 max-w-sm sm:max-w-lg md:max-w-xl text-neutral-300 text-xs sm:text-sm md:text-base font-normal leading-relaxed tracking-tight"
+          className="hero-anim hero-fade mt-4 sm:mt-6 md:mt-7 max-w-sm sm:max-w-lg md:max-w-xl text-neutral-300 text-xs sm:text-sm md:text-base font-normal leading-relaxed tracking-tight"
           style={{ animationDelay: '0.6s' }}
         >
           Frelanta designs and builds websites, landing pages, applications, and
           digital experiences for people and brands ready to stand out.
         </p>
 
-        {/* Interactive Action Buttons */}
+        {/* Action Buttons with Definite Separation */}
         <div
-          className="hero-anim hero-fade mt-4 sm:mt-6 md:mt-7 flex flex-wrap items-center justify-center gap-3 sm:gap-4 pointer-events-auto"
+          className="hero-anim hero-fade mt-5 sm:mt-7 md:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 pointer-events-auto"
           style={{ animationDelay: '0.7s' }}
         >
           <button
             type="button"
             onClick={scrollToContact}
-            className="inline-flex items-center gap-2 bg-[#E8702A] hover:bg-[#D2611F] text-white text-xs sm:text-sm font-medium px-5 sm:px-7 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-95 hover:shadow-lg hover:shadow-[#E8702A]/30 focus:outline-none focus:ring-2 focus:ring-[#E8702A]/60"
+            className="inline-flex items-center gap-2 bg-[#E8702A] hover:bg-[#D2611F] text-white text-xs sm:text-sm font-medium px-6 sm:px-7 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-95 hover:shadow-lg hover:shadow-[#E8702A]/30 focus:outline-none focus:ring-2 focus:ring-[#E8702A]/60 cursor-pointer"
           >
             <span>Start a project</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -175,19 +175,19 @@ export const Hero: React.FC = () => {
           <button
             type="button"
             onClick={scrollToWork}
-            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 hover:border-white/30 text-white text-xs sm:text-sm font-medium px-5 sm:px-7 py-2.5 sm:py-3 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/40"
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 hover:border-white/30 text-white text-xs sm:text-sm font-medium px-6 sm:px-7 py-2.5 sm:py-3 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/40 cursor-pointer"
           >
             <span>View our work</span>
           </button>
         </div>
       </div>
 
-      {/* Hero Bottom Bar: Completely contained inside 100dvh */}
+      {/* Hero Bottom Bar: Anchored inside viewport boundary */}
       <div className="w-full px-6 sm:px-10 pb-4 sm:pb-6 md:pb-7 flex-shrink-0 z-20 pointer-events-none">
         <div className="max-w-6xl mx-auto flex items-end justify-between text-xs text-neutral-400">
           {/* Bottom Left: Studio identity */}
           <div
-            className="hero-anim hero-fade hidden md:block text-left"
+            className="hero-anim hero-fade hidden sm:block text-left"
             style={{ animationDelay: '0.8s' }}
           >
             <p className="font-medium text-white/90">Independent digital studio</p>
@@ -200,7 +200,7 @@ export const Hero: React.FC = () => {
           <button
             type="button"
             onClick={scrollToWork}
-            className="pointer-events-auto mx-auto md:mx-0 flex flex-col items-center gap-1.5 group cursor-pointer text-[10px] uppercase tracking-[0.25em] text-neutral-400 hover:text-white transition-colors"
+            className="pointer-events-auto mx-auto sm:mx-0 flex flex-col items-center gap-1.5 group cursor-pointer text-[10px] uppercase tracking-[0.25em] text-neutral-400 hover:text-white transition-colors"
             aria-label="Scroll to portfolio section"
           >
             <span>SCROLL</span>
@@ -211,7 +211,7 @@ export const Hero: React.FC = () => {
 
           {/* Bottom Right: Global Presence */}
           <div
-            className="hero-anim hero-fade hidden md:block text-right"
+            className="hero-anim hero-fade hidden sm:block text-right"
             style={{ animationDelay: '0.9s' }}
           >
             <p className="font-medium text-white/90">Based in India.</p>

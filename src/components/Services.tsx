@@ -82,7 +82,7 @@ export const Services: React.FC = () => {
                 key={service.number}
                 onMouseEnter={() => setHoveredIdx(index)}
                 onMouseLeave={() => setHoveredIdx(null)}
-                className="group relative py-10 sm:py-14 px-4 sm:px-6 -mx-4 sm:-mx-6 rounded-2xl transition-all duration-500 hover:bg-white/[0.02] cursor-default"
+                className="group relative py-10 sm:py-14 px-4 sm:px-6 rounded-2xl transition-all duration-500 hover:bg-white/[0.02] cursor-default w-full"
               >
                 {/* Highlight left accent on hover */}
                 <div
