@@ -36,7 +36,6 @@ export const Hero: React.FC = () => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
 
-      // If initial position was offscreen, jump smooth cursor closer
       if (smooth.current.x < -500) {
         smooth.current.x = e.clientX;
         smooth.current.y = e.clientY;
@@ -80,13 +79,13 @@ export const Hero: React.FC = () => {
 
   return (
     <section
-      className="relative w-full overflow-hidden h-screen bg-black select-none"
-      style={{ height: '100dvh' }}
+      className="relative w-full overflow-hidden bg-black select-none flex flex-col justify-between"
+      style={{ height: '100dvh', minHeight: '100dvh' }}
       aria-label="Frelanta Studio Introduction"
     >
       {/* Base Hero Image with Zoom Load Animation */}
       <div
-        className="hero-zoom absolute inset-0 bg-cover bg-center"
+        className="hero-zoom absolute inset-0 bg-cover bg-center pointer-events-none"
         style={{
           backgroundImage: `url(${HERO_IMAGES.base})`,
           filter: 'brightness(0.65) contrast(1.15)',
@@ -94,8 +93,8 @@ export const Hero: React.FC = () => {
       />
 
       {/* Dark gradient overlays for contrast and readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#050505] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(5,5,5,0.7)_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/40 to-[#0A0A0A] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(5,5,5,0.75)_100%)] pointer-events-none" />
 
       {/* Reveal Layer with Cursor Spotlight (Desktop only) */}
       {!isTouchDevice && (
@@ -106,11 +105,14 @@ export const Hero: React.FC = () => {
         />
       )}
 
-      {/* Hero Typography & Content Overlay */}
-      <div className="absolute top-[14%] sm:top-[15%] md:top-[14%] left-0 right-0 flex flex-col items-center text-center px-4 sm:px-6 pointer-events-none z-20">
+      {/* Top Spacer for Fixed Navigation */}
+      <div className="w-full pt-16 sm:pt-20 md:pt-24 pointer-events-none flex-shrink-0" />
+
+      {/* Hero Central Content Area: Vertically centered in available space */}
+      <div className="flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-8 w-full max-w-6xl mx-auto my-auto z-20 pointer-events-none">
         {/* Eyebrow */}
         <div
-          className="hero-anim hero-fade mb-3 sm:mb-4"
+          className="hero-anim hero-fade mb-2.5 sm:mb-3.5 md:mb-4"
           style={{ animationDelay: '0.1s' }}
         >
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.06] border border-white/10 text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-neutral-300 uppercase">
@@ -119,16 +121,16 @@ export const Hero: React.FC = () => {
           </span>
         </div>
 
-        {/* Main Heading with tight leading & Playfair italic accents */}
-        <h1 className="max-w-6xl tracking-tightest leading-[0.9] text-white">
+        {/* Responsive Editorial Heading: strictly contained, no horizontal overflow */}
+        <h1 className="w-full max-w-5xl tracking-tightest leading-[0.92] text-white">
           <span
-            className="hero-anim hero-reveal block text-4xl sm:text-6xl md:text-7xl lg:text-[8.5rem]"
+            className="hero-anim hero-reveal block text-[2.2rem] xs:text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.2rem] 2xl:text-[6.4rem]"
             style={{ animationDelay: '0.15s' }}
           >
             We build
           </span>
           <span
-            className="hero-anim hero-reveal block text-4xl sm:text-6xl md:text-7xl lg:text-[8.5rem] mt-1 sm:mt-2"
+            className="hero-anim hero-reveal block text-[2.2rem] xs:text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.2rem] 2xl:text-[6.4rem] mt-0.5 sm:mt-1.5"
             style={{ animationDelay: '0.30s' }}
           >
             <span className="font-playfair italic font-normal text-neutral-200">
@@ -137,7 +139,7 @@ export const Hero: React.FC = () => {
             things
           </span>
           <span
-            className="hero-anim hero-reveal block text-3xl sm:text-5xl md:text-7xl lg:text-[7.8rem] text-neutral-300 mt-1 sm:mt-2"
+            className="hero-anim hero-reveal block text-[2rem] xs:text-[2.4rem] sm:text-[2.8rem] md:text-5xl lg:text-[4.2rem] xl:text-[4.8rem] 2xl:text-[5.8rem] text-neutral-300 mt-0.5 sm:mt-1.5"
             style={{ animationDelay: '0.45s' }}
           >
             worth{' '}
@@ -149,22 +151,22 @@ export const Hero: React.FC = () => {
 
         {/* Hero Supporting Copy */}
         <p
-          className="hero-anim hero-fade mt-5 sm:mt-7 max-w-xl text-neutral-300 text-xs sm:text-sm md:text-base font-normal leading-relaxed tracking-tight"
+          className="hero-anim hero-fade mt-3 sm:mt-4 md:mt-6 max-w-sm sm:max-w-lg md:max-w-xl text-neutral-300 text-xs sm:text-sm md:text-base font-normal leading-relaxed tracking-tight"
           style={{ animationDelay: '0.6s' }}
         >
           Frelanta designs and builds websites, landing pages, applications, and
           digital experiences for people and brands ready to stand out.
         </p>
 
-        {/* Interactive Buttons (pointer-events-auto enabled) */}
+        {/* Interactive Action Buttons */}
         <div
-          className="hero-anim hero-fade mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 pointer-events-auto"
+          className="hero-anim hero-fade mt-4 sm:mt-6 md:mt-7 flex flex-wrap items-center justify-center gap-3 sm:gap-4 pointer-events-auto"
           style={{ animationDelay: '0.7s' }}
         >
           <button
             type="button"
             onClick={scrollToContact}
-            className="inline-flex items-center gap-2 bg-[#E8702A] hover:bg-[#D2611F] text-white text-xs sm:text-sm font-medium px-6 sm:px-7 py-3 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-95 hover:shadow-lg hover:shadow-[#E8702A]/30 focus:outline-none focus:ring-2 focus:ring-[#E8702A]/60"
+            className="inline-flex items-center gap-2 bg-[#E8702A] hover:bg-[#D2611F] text-white text-xs sm:text-sm font-medium px-5 sm:px-7 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-95 hover:shadow-lg hover:shadow-[#E8702A]/30 focus:outline-none focus:ring-2 focus:ring-[#E8702A]/60"
           >
             <span>Start a project</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -173,48 +175,50 @@ export const Hero: React.FC = () => {
           <button
             type="button"
             onClick={scrollToWork}
-            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 hover:border-white/30 text-white text-xs sm:text-sm font-medium px-6 sm:px-7 py-3 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/40"
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 hover:border-white/30 text-white text-xs sm:text-sm font-medium px-5 sm:px-7 py-2.5 sm:py-3 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/40"
           >
             <span>View our work</span>
           </button>
         </div>
       </div>
 
-      {/* Hero Bottom Bar Information */}
-      <div className="absolute bottom-6 sm:bottom-8 left-0 right-0 px-6 sm:px-10 flex items-end justify-between text-xs text-neutral-400 pointer-events-none z-20">
-        {/* Bottom Left: Studio identity */}
-        <div
-          className="hero-anim hero-fade hidden sm:block text-left"
-          style={{ animationDelay: '0.8s' }}
-        >
-          <p className="font-medium text-white/90">Independent digital studio</p>
-          <p className="text-neutral-500 text-[11px] mt-0.5 tracking-tight">
-            Design × Development
-          </p>
-        </div>
-
-        {/* Center: Subtle Scroll Indicator */}
-        <button
-          type="button"
-          onClick={scrollToWork}
-          className="pointer-events-auto mx-auto sm:mx-0 flex flex-col items-center gap-2 group cursor-pointer text-[10px] uppercase tracking-[0.25em] text-neutral-400 hover:text-white transition-colors"
-          aria-label="Scroll to portfolio section"
-        >
-          <span>SCROLL</span>
-          <div className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1 group-hover:border-white/50 transition-colors">
-            <span className="w-1 h-2 rounded-full bg-[#E8702A] animate-bounce" />
+      {/* Hero Bottom Bar: Completely contained inside 100dvh */}
+      <div className="w-full px-6 sm:px-10 pb-4 sm:pb-6 md:pb-7 flex-shrink-0 z-20 pointer-events-none">
+        <div className="max-w-6xl mx-auto flex items-end justify-between text-xs text-neutral-400">
+          {/* Bottom Left: Studio identity */}
+          <div
+            className="hero-anim hero-fade hidden md:block text-left"
+            style={{ animationDelay: '0.8s' }}
+          >
+            <p className="font-medium text-white/90">Independent digital studio</p>
+            <p className="text-neutral-500 text-[11px] mt-0.5 tracking-tight">
+              Design × Development
+            </p>
           </div>
-        </button>
 
-        {/* Bottom Right: Global Presence */}
-        <div
-          className="hero-anim hero-fade hidden sm:block text-right"
-          style={{ animationDelay: '0.9s' }}
-        >
-          <p className="font-medium text-white/90">Based in India.</p>
-          <p className="text-neutral-500 text-[11px] mt-0.5 tracking-tight">
-            Working globally.
-          </p>
+          {/* Center: Scroll Indicator */}
+          <button
+            type="button"
+            onClick={scrollToWork}
+            className="pointer-events-auto mx-auto md:mx-0 flex flex-col items-center gap-1.5 group cursor-pointer text-[10px] uppercase tracking-[0.25em] text-neutral-400 hover:text-white transition-colors"
+            aria-label="Scroll to portfolio section"
+          >
+            <span>SCROLL</span>
+            <div className="w-4 h-7 sm:w-5 sm:h-8 rounded-full border border-white/20 flex items-start justify-center p-1 group-hover:border-white/50 transition-colors">
+              <span className="w-1 h-1.5 sm:h-2 rounded-full bg-[#E8702A] animate-bounce" />
+            </div>
+          </button>
+
+          {/* Bottom Right: Global Presence */}
+          <div
+            className="hero-anim hero-fade hidden md:block text-right"
+            style={{ animationDelay: '0.9s' }}
+          >
+            <p className="font-medium text-white/90">Based in India.</p>
+            <p className="text-neutral-500 text-[11px] mt-0.5 tracking-tight">
+              Working globally.
+            </p>
+          </div>
         </div>
       </div>
     </section>

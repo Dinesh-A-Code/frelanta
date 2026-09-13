@@ -65,17 +65,17 @@ export const Contact: React.FC = () => {
             {/* Direct Studio Email Contact Button */}
             <div className="mt-10 sm:mt-14 pt-8 border-t border-white/[0.08]">
               <p className="text-xs uppercase tracking-widest text-neutral-500 font-mono mb-3">
-                Direct Line
+                DIRECT LINE
               </p>
               <a
-                href={`mailto:${STUDIO_CONFIG.contactEmail}?subject=Project%20Inquiry%20%E2%80%94%20Frelanta`}
-                className="group inline-flex items-center gap-3 text-2xl sm:text-3xl font-light text-white hover:text-[#E8702A] transition-colors"
+                href={`mailto:${STUDIO_CONFIG.contactEmail}`}
+                className="group inline-flex items-center gap-2 sm:gap-3 text-base sm:text-2xl md:text-3xl font-light text-white hover:text-[#E8702A] transition-colors break-all"
               >
-                <Mail className="w-6 h-6 text-[#E8702A]" />
+                <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-[#E8702A] flex-shrink-0" />
                 <span className="underline decoration-white/20 underline-offset-8 group-hover:decoration-[#E8702A]">
                   {STUDIO_CONFIG.contactEmail}
                 </span>
-                <ArrowUpRight className="w-6 h-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
 
               <div className="mt-6 flex items-center gap-2 text-xs text-neutral-400">

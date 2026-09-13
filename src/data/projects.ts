@@ -20,7 +20,7 @@ export const PROJECTS: Project[] = [
     description:
       'A bespoke digital storefront and ordering platform for a boutique handmade crochet studio. Features curated product discovery, responsive visual cataloging, and direct WhatsApp commerce workflow.',
     image: '/projects/sd-flowers/screen.png',
-    href: 'https://sd-flowers.vercel.app/',
+    href: 'https://sdflowers.netlify.app',
     github: 'https://github.com/Dinesh-A-Code/sd-flowers',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Commerce'],
     featured: true,
@@ -54,13 +54,11 @@ export const PROJECTS: Project[] = [
 ];
 
 export const STUDIO_CONFIG = {
-  name: 'FRELANTA',
+  name: 'FRELANTA.',
   tagline: 'Independent digital studio.',
-  contactEmail: 'hello@yourdomain.com', // Replaceable studio contact email
+  contactEmail: 'adinesh09092005@gmail.com',
   location: 'Based in India. Working globally.',
   socials: {
     github: 'https://github.com/Dinesh-A-Code',
-    linkedin: 'https://linkedin.com',
-    instagram: 'https://instagram.com',
   },
 };

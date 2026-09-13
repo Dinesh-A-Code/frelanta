@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
 import { STUDIO_CONFIG } from '../data/projects';
-import { GithubIcon, LinkedinIcon, InstagramIcon } from './Icons';
+import { GithubIcon } from './Icons';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -25,7 +25,6 @@ export const Footer: React.FC = () => {
           <div className="max-w-sm">
             <a href="#" className="flex items-center gap-2 text-2xl font-bold tracking-tight text-white mb-4">
               <span>{STUDIO_CONFIG.name}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E8702A]" />
             </a>
             <p className="text-sm text-neutral-400 font-light leading-relaxed">
               {STUDIO_CONFIG.tagline}
@@ -35,7 +34,7 @@ export const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Quick Nav Links */}
+          {/* Quick Nav Links & Social */}
           <div className="flex flex-col sm:flex-row gap-12 sm:gap-20">
             <div>
               <p className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-4 font-semibold">
@@ -55,7 +54,7 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Social Channels */}
+            {/* Social Channel: GitHub Only */}
             <div>
               <p className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-4 font-semibold">
                 Connect
@@ -70,28 +69,6 @@ export const Footer: React.FC = () => {
                   >
                     <GithubIcon className="w-4 h-4" />
                     <span>GitHub</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={STUDIO_CONFIG.socials.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 hover:text-white transition-colors"
-                  >
-                    <LinkedinIcon className="w-4 h-4" />
-                    <span>LinkedIn</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={STUDIO_CONFIG.socials.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 hover:text-white transition-colors"
-                  >
-                    <InstagramIcon className="w-4 h-4" />
-                    <span>Instagram</span>
                   </a>
                 </li>
               </ul>
