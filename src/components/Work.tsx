@@ -1,8 +1,8 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { ProjectCard } from './ProjectCard';
 import { PROJECTS, STUDIO_CONFIG } from '../data/projects';
 import { RevealOnScroll } from './RevealOnScroll';
+import { ExpandedProjectRail } from './ExpandedProjectRail';
 
 export const Work: React.FC = () => {
   return (
@@ -30,27 +30,13 @@ export const Work: React.FC = () => {
           </div>
         </RevealOnScroll>
 
-        {/* Featured Lead Project: SD Flowers */}
-        <RevealOnScroll delay={100} duration={850} direction="up" className="mb-14">
-          <ProjectCard project={PROJECTS[0]} index={0} />
+        {/* Interactive Expanded Cards Rail (Desktop) & Clean Stacked Cards (Mobile) */}
+        <RevealOnScroll delay={150} duration={850} direction="up">
+          <ExpandedProjectRail projects={PROJECTS} />
         </RevealOnScroll>
 
-        {/* Supporting Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
-          {PROJECTS.slice(1).map((project, idx) => (
-            <RevealOnScroll
-              key={project.id}
-              delay={220 + idx * 120}
-              duration={850}
-              direction="up"
-            >
-              <ProjectCard project={project} index={idx + 1} />
-            </RevealOnScroll>
-          ))}
-        </div>
-
         {/* Section Footer Callout */}
-        <RevealOnScroll delay={400} duration={800} direction="up">
+        <RevealOnScroll delay={300} duration={800} direction="up">
           <div className="mt-16 sm:mt-20 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-neutral-400">
             <p>
               More client prototypes and open experiments are documented on GitHub.

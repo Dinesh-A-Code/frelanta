@@ -1,5 +1,6 @@
 export interface Project {
   id: string;
+  number: string;
   title: string;
   category: string;
   year: string;
@@ -14,12 +15,13 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     id: 'sd-flowers',
+    number: '01',
     title: 'SD Flowers',
     category: 'Website / E-commerce',
     year: '2026',
     description:
       'A bespoke digital storefront and ordering platform for a boutique handmade crochet studio. Features curated product discovery, responsive visual cataloging, and direct WhatsApp commerce workflow.',
-    image: '/projects/sd-flowers/screen.png',
+    image: '/projects/sd-flowers/sd-flowers-desktop.png',
     href: 'https://sdflowers.netlify.app',
     github: 'https://github.com/Dinesh-A-Code/sd-flowers',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Commerce'],
@@ -27,8 +29,9 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'ledgerpilot',
+    number: '02',
     title: 'LedgerPilot',
-    category: 'Web Application / FinTech AI',
+    category: 'Financial Intelligence Platform',
     year: '2026',
     description:
       'Deterministic financial reconciliation engine and AI-assisted investigation agent built for complex multi-source transaction matching, audit trails, and automated exception resolution.',
@@ -40,8 +43,9 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'phishsite',
+    number: '03',
     title: 'PhishSite',
-    category: 'Web Application / Cybersecurity',
+    category: 'Security / Web Application',
     year: '2026',
     description:
       'Browser-based email origin classifier and security triage tool providing real-time suspicious-content detection, SPF/DKIM/DMARC authentication inspection, and Gmail integration.',
